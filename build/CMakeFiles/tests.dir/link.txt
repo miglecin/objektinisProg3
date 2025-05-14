@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/libomp/lib CMakeFiles/tests.dir/Src/catchTests.cpp.o -o tests  _deps/catch2-build/src/libCatch2Main.a libMyVector.a _deps/catch2-build/src/libCatch2.a
