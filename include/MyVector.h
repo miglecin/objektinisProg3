@@ -3,16 +3,18 @@
 
 #include <stdexcept>
 #include <initializer_list>
-#include <algorithm> // for std::copy
+#include <algorithm>
+#include <memory> // for std::allocator
+
 
 template <typename T>
 class MyVector {
 private:
-    T* arr;        // Pointer to dynamically allocated array
-    size_t size;   // Number of elements in the vector
-    size_t capacity; // Capacity of the vector
+    T* arr;
+    size_t sz;
+    size_t cap;
 
-    void resize(); // Utility function to handle resizing
+    void resize_internal();
 
 public:
     using value_type = T;
@@ -20,23 +22,66 @@ public:
     using reference = T&;
     using const_reference = const T&;
 
-    MyVector();                 // Default constructor
-    ~MyVector();                // Destructor
+    MyVector();
+    ~MyVector();
 
-    MyVector(const MyVector& other);        // Copy constructor
-    MyVector& operator=(const MyVector& other); // Copy assignment operator
+    MyVector(const MyVector& other);
+    MyVector& operator=(const MyVector& other);
 
-    MyVector(MyVector&& other) noexcept;        // Move constructor
-    MyVector& operator=(MyVector&& other) noexcept; // Move assignment operator
+    MyVector(MyVector&& other) noexcept;
+    MyVector& operator=(MyVector&& other) noexcept;
 
-    void push_back(const T& element); // Add element
-    void pop_back(); // Remove last element
+    MyVector(std::initializer_list<T> init) { //initializer_list konstruktorius
+    sz = init.size();
+    cap = sz;
+    arr = new T[cap];
+    std::copy(init.begin(), init.end(), arr);
+    }
+
+    void push_back(const T& element);
+    void pop_back();
+    void clear();
+    bool empty() const;
+
+    void resize(size_t new_size);
+    void reserve(size_t new_capacity);
+    void assign(size_t n, const T& value);
+    void swap(MyVector& other) noexcept;
 
     size_t get_size() const;
     size_t get_capacity() const;
 
-    T& operator[](size_t index);  // Access element at index
-    const T& operator[](size_t index) const; // Const version for access
+    T& operator[](size_t index);
+    const T& operator[](size_t index) const;
+
+    T& at(size_t index);
+    const T& at(size_t index) const;
+
+    T& front();
+    T& back();
+
+    void shrink_to_fit();
+
+    // Iterators
+    T* begin();
+    T* end();
+    const T* begin() const;
+    const T* end() const;
+
+
+    void insert(size_t pos, const T& value) {
+        if (pos > sz) throw std::out_of_range("Insert position out of range");
+        if (sz == cap) resize_internal();
+        for (size_t i = sz; i > pos; --i) arr[i] = arr[i - 1];
+        arr[pos] = value;
+        ++sz;
+    }
+
+    void erase(size_t pos) {
+        if (pos >= sz) throw std::out_of_range("Erase position out of range");
+        for (size_t i = pos; i < sz - 1; ++i) arr[i] = arr[i + 1];
+        --sz;
+    }
 };
 
 #endif // MYVECTOR_H

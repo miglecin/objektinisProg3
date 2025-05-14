@@ -1,9 +1,9 @@
 #include "MyVector.h"
-#include <iostream>
+#include <string>
 
 template <typename T>
-MyVector<T>::MyVector() : size(0), capacity(1) {
-    arr = new T[capacity];
+MyVector<T>::MyVector() : sz(0), cap(1) {
+    arr = new T[cap];
 }
 
 template <typename T>
@@ -12,105 +12,185 @@ MyVector<T>::~MyVector() {
 }
 
 template <typename T>
-MyVector<T>::MyVector(const MyVector& other) : size(other.size), capacity(other.capacity) {
-    arr = new T[capacity];
-    for (size_t i = 0; i < size; ++i) {
-        arr[i] = other.arr[i];
-    }
+MyVector<T>::MyVector(const MyVector& other) : sz(other.sz), cap(other.cap) {
+    arr = new T[cap];
+    std::copy(other.arr, other.arr + sz, arr);
 }
 
 template <typename T>
 MyVector<T>& MyVector<T>::operator=(const MyVector& other) {
-    if (this == &other) return *this;
-
-    delete[] arr;
-
-    size = other.size;
-    capacity = other.capacity;
-    arr = new T[capacity];
-    for (size_t i = 0; i < size; ++i) {
-        arr[i] = other.arr[i];
+    if (this != &other) {
+        delete[] arr;
+        sz = other.sz;
+        cap = other.cap;
+        arr = new T[cap];
+        std::copy(other.arr, other.arr + sz, arr);
     }
-
     return *this;
 }
 
 template <typename T>
-MyVector<T>::MyVector(MyVector&& other) noexcept 
-    : arr(other.arr), size(other.size), capacity(other.capacity) {
+MyVector<T>::MyVector(MyVector&& other) noexcept : arr(other.arr), sz(other.sz), cap(other.cap) {
     other.arr = nullptr;
-    other.size = 0;
-    other.capacity = 0;
+    other.sz = 0;
+    other.cap = 0;
 }
 
 template <typename T>
 MyVector<T>& MyVector<T>::operator=(MyVector&& other) noexcept {
-    if (this == &other) return *this;
-
-    delete[] arr;
-
-    arr = other.arr;
-    size = other.size;
-    capacity = other.capacity;
-
-    other.arr = nullptr;
-    other.size = 0;
-    other.capacity = 0;
-
+    if (this != &other) {
+        delete[] arr;
+        arr = other.arr;
+        sz = other.sz;
+        cap = other.cap;
+        other.arr = nullptr;
+        other.sz = 0;
+        other.cap = 0;
+    }
     return *this;
 }
 
 template <typename T>
-void MyVector<T>::resize() {
-    capacity *= 2;
-    T* new_arr = new T[capacity];
-    std::copy(arr, arr + size, new_arr);
+void MyVector<T>::resize_internal() {
+    cap *= 2;
+    T* new_arr = new T[cap];
+    std::copy(arr, arr + sz, new_arr);
     delete[] arr;
     arr = new_arr;
 }
 
 template <typename T>
 void MyVector<T>::push_back(const T& element) {
-    if (size == capacity) {
-        resize();
+    if (sz == cap) {
+        resize_internal();
     }
-    arr[size++] = element;
+    arr[sz++] = element;
 }
 
 template <typename T>
 void MyVector<T>::pop_back() {
-    if (size > 0) {
-        --size;
+    if (sz > 0) --sz;
+}
+
+template <typename T>
+void MyVector<T>::clear() {
+    sz = 0;
+}
+
+template <typename T>
+bool MyVector<T>::empty() const {
+    return sz == 0;
+}
+
+template <typename T>
+void MyVector<T>::resize(size_t new_size) {
+    if (new_size > cap) reserve(new_size);
+    sz = new_size;
+}
+
+template <typename T>
+void MyVector<T>::reserve(size_t new_capacity) {
+    if (new_capacity > cap) {
+        T* new_arr = new T[new_capacity];
+        std::copy(arr, arr + sz, new_arr);
+        delete[] arr;
+        arr = new_arr;
+        cap = new_capacity;
     }
 }
 
 template <typename T>
-T& MyVector<T>::operator[](size_t index) {
-    if (index >= size) {
-        throw std::out_of_range("Index out of bounds");
+void MyVector<T>::assign(size_t n, const T& value) {
+    if (n > cap) reserve(n);
+    for (size_t i = 0; i < n; ++i) {
+        arr[i] = value;
     }
+    sz = n;
+}
+
+template <typename T>
+void MyVector<T>::swap(MyVector& other) noexcept {
+    std::swap(arr, other.arr);
+    std::swap(sz, other.sz);
+    std::swap(cap, other.cap);
+}
+
+template <typename T>
+size_t MyVector<T>::get_size() const {
+    return sz;
+}
+
+template <typename T>
+size_t MyVector<T>::get_capacity() const {
+    return cap;
+}
+
+template <typename T>
+T& MyVector<T>::operator[](size_t index) {
     return arr[index];
 }
 
 template <typename T>
 const T& MyVector<T>::operator[](size_t index) const {
-    if (index >= size) {
-        throw std::out_of_range("Index out of bounds");
-    }
     return arr[index];
 }
 
 template <typename T>
-size_t MyVector<T>::get_size() const {
-    return size;
+T& MyVector<T>::at(size_t index) {
+    if (index >= sz) throw std::out_of_range("Index out of range");
+    return arr[index];
 }
 
 template <typename T>
-size_t MyVector<T>::get_capacity() const {
-    return capacity;
+const T& MyVector<T>::at(size_t index) const {
+    if (index >= sz) throw std::out_of_range("Index out of range");
+    return arr[index];
 }
 
-// Explicit template instantiation for commonly used types
+template <typename T>
+T& MyVector<T>::front() {
+    if (sz == 0) throw std::out_of_range("Vector is empty");
+    return arr[0];
+}
+
+template <typename T>
+T& MyVector<T>::back() {
+    if (sz == 0) throw std::out_of_range("Vector is empty");
+    return arr[sz - 1];
+}
+
+template <typename T>
+void MyVector<T>::shrink_to_fit() {
+    if (sz < cap) {
+        T* new_arr = new T[sz];
+        std::copy(arr, arr + sz, new_arr);
+        delete[] arr;
+        arr = new_arr;
+        cap = sz;
+    }
+}
+
+template <typename T>
+T* MyVector<T>::begin() {
+    return arr;
+}
+
+template <typename T>
+T* MyVector<T>::end() {
+    return arr + sz;
+}
+
+template <typename T>
+const T* MyVector<T>::begin() const {
+    return arr;
+}
+
+template <typename T>
+const T* MyVector<T>::end() const {
+    return arr + sz;
+}
+
+// Šablonų instanciacijos
 template class MyVector<int>;
 template class MyVector<double>;
 template class MyVector<std::string>;
