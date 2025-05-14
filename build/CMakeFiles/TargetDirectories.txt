@@ -1,0 +1,3 @@
+/Users/miglecincikaite/Desktop/objektinis/objektinisProg3/build/CMakeFiles/VectorApp.dir
+/Users/miglecincikaite/Desktop/objektinis/objektinisProg3/build/CMakeFiles/edit_cache.dir
+/Users/miglecincikaite/Desktop/objektinis/objektinisProg3/build/CMakeFiles/rebuild_cache.dir
