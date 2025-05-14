@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/miglecincikaite/Desktop/objektinis/objektinisProg3/Src/MyVector.cpp" "CMakeFiles/VectorApp.dir/Src/MyVector.cpp.o" "gcc" "CMakeFiles/VectorApp.dir/Src/MyVector.cpp.o.d"
   "/Users/miglecincikaite/Desktop/objektinis/objektinisProg3/Src/main.cpp" "CMakeFiles/VectorApp.dir/Src/main.cpp.o" "gcc" "CMakeFiles/VectorApp.dir/Src/main.cpp.o.d"
   )
 

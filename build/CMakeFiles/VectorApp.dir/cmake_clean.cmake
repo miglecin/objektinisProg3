@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/VectorApp.dir/Src/MyVector.cpp.o"
-  "CMakeFiles/VectorApp.dir/Src/MyVector.cpp.o.d"
   "CMakeFiles/VectorApp.dir/Src/main.cpp.o"
   "CMakeFiles/VectorApp.dir/Src/main.cpp.o.d"
   "VectorApp"

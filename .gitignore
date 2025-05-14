@@ -1,0 +1,26 @@
+# Ignoruoti build katalogą
+build/
+
+# Ignoruoti testavimo failus
+test_files/
+
+# Ignoruoti rezultatu failus
+rezultatai/
+results/
+
+# Ignoruoti temp ir kompiliavimo failus (priklauso nuo projekto)
+*.o
+*.out
+*.exe
+
+# Ignoruoti IDE/Editor konfigūracijų failus (priklauso nuo naudojamo redaktoriaus)
+.vscode/
+.idea/
+.DS_Store
+
+bin/
+
+# Ignoruoti build katalogą
+build/
+
+objektinisProg2/

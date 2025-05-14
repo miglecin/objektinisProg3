@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /Users/miglecincikaite/Desktop/objektinis/objektinisProg3/bui
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/local/bin/ctest $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -117,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named MyVector
+
+# Build rule for target.
+MyVector: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector
+.PHONY : MyVector
+
+# fast build rule for target.
+MyVector/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyVector.dir/build.make CMakeFiles/MyVector.dir/build
+.PHONY : MyVector/fast
+
+#=============================================================================
 # Target rules for targets named VectorApp
 
 # Build rule for target.
@@ -129,12 +152,51 @@ VectorApp/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VectorApp.dir/build.make CMakeFiles/VectorApp.dir/build
 .PHONY : VectorApp/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
+#=============================================================================
+# Target rules for targets named Catch2
+
+# Build rule for target.
+Catch2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2
+.PHONY : Catch2
+
+# fast build rule for target.
+Catch2/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2.dir/build
+.PHONY : Catch2/fast
+
+#=============================================================================
+# Target rules for targets named Catch2WithMain
+
+# Build rule for target.
+Catch2WithMain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2WithMain
+.PHONY : Catch2WithMain
+
+# fast build rule for target.
+Catch2WithMain/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build
+.PHONY : Catch2WithMain/fast
+
 Src/MyVector.o: Src/MyVector.cpp.o
 .PHONY : Src/MyVector.o
 
 # target to build an object file
 Src/MyVector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VectorApp.dir/build.make CMakeFiles/VectorApp.dir/Src/MyVector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyVector.dir/build.make CMakeFiles/MyVector.dir/Src/MyVector.cpp.o
 .PHONY : Src/MyVector.cpp.o
 
 Src/MyVector.i: Src/MyVector.cpp.i
@@ -142,7 +204,7 @@ Src/MyVector.i: Src/MyVector.cpp.i
 
 # target to preprocess a source file
 Src/MyVector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VectorApp.dir/build.make CMakeFiles/VectorApp.dir/Src/MyVector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyVector.dir/build.make CMakeFiles/MyVector.dir/Src/MyVector.cpp.i
 .PHONY : Src/MyVector.cpp.i
 
 Src/MyVector.s: Src/MyVector.cpp.s
@@ -150,8 +212,32 @@ Src/MyVector.s: Src/MyVector.cpp.s
 
 # target to generate assembly for a file
 Src/MyVector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VectorApp.dir/build.make CMakeFiles/VectorApp.dir/Src/MyVector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyVector.dir/build.make CMakeFiles/MyVector.dir/Src/MyVector.cpp.s
 .PHONY : Src/MyVector.cpp.s
+
+Src/catchTests.o: Src/catchTests.cpp.o
+.PHONY : Src/catchTests.o
+
+# target to build an object file
+Src/catchTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Src/catchTests.cpp.o
+.PHONY : Src/catchTests.cpp.o
+
+Src/catchTests.i: Src/catchTests.cpp.i
+.PHONY : Src/catchTests.i
+
+# target to preprocess a source file
+Src/catchTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Src/catchTests.cpp.i
+.PHONY : Src/catchTests.cpp.i
+
+Src/catchTests.s: Src/catchTests.cpp.s
+.PHONY : Src/catchTests.s
+
+# target to generate assembly for a file
+Src/catchTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Src/catchTests.cpp.s
+.PHONY : Src/catchTests.cpp.s
 
 Src/main.o: Src/main.cpp.o
 .PHONY : Src/main.o
@@ -185,10 +271,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... Catch2"
+	@echo "... Catch2WithMain"
+	@echo "... MyVector"
 	@echo "... VectorApp"
+	@echo "... tests"
 	@echo "... Src/MyVector.o"
 	@echo "... Src/MyVector.i"
 	@echo "... Src/MyVector.s"
+	@echo "... Src/catchTests.o"
+	@echo "... Src/catchTests.i"
+	@echo "... Src/catchTests.s"
 	@echo "... Src/main.o"
 	@echo "... Src/main.i"
 	@echo "... Src/main.s"
