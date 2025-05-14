@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "sparta.h"
+#include "perskirstymai.h"
 #include "MyVector.h"  
 
 void matuotiSparta(unsigned int dydis);
@@ -32,10 +33,11 @@ int main() {
 
 
     std::vector<unsigned int> dydziai = {10000, 100000, 1000000, 10000000};
-
     for (unsigned int d : dydziai) {
         matuotiSparta(d);
     }
+
+    skaiciuotiPerskirstymus(100000000);
 
     return 0;
 }

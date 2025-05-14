@@ -139,3 +139,21 @@ auto start = high_resolution_clock::now();
 for (unsigned int i = 1; i <= N; ++i)
     v.push_back(i);
 auto end = high_resolution_clock::now();
+```
+
+-----------------------------------------------
+### Atminties perskirstymų palyginimas
+
+Atliekant testą su (`100000000`) `int` tipo elementų:
+
+| Konteineris     | Perskirstymų skaičius |
+|------------------|------------------------|
+| `std::vector`    | 28                     |
+| `MyVector`       | 27                     |
+
+### Išvados:
+- Abi struktūros elgiasi labai panašiai.
+- `MyVector` naudoja `capacity *= 2` metodą, kuris lemia mažą kiekį perskirstymų.
+- `std::vector` gali naudoti šiek tiek kitokį augimo algoritmą, todėl kartais perskirstymų daugiau.
+
+Šis testas parodo, kad `MyVector` klasė yra efektyviai įgyvendinta ir savo elgsena artima standartinei `std::vector` klasei.

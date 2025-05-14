@@ -28,6 +28,7 @@ add_library(MyVector
 add_executable(VectorApp
     Src/main.cpp
     Src/sparta.cpp
+    Src/perskirstymai.cpp
 )
 
 # Susiejame MyVector biblioteką su pagrindiniu vykdomu failu
