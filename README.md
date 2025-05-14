@@ -111,4 +111,31 @@ mkdir build && cd build
 cmake ..
 make
 ./tests
+```
+-----------------------------------------------------------
+### Efektyvumo analizė: `std::vector` vs `MyVector`
 
+Buvo atliktas eksperimentas, kurio metu matuotas laikas (milisekundėmis), kiek užtrunka `std::vector` ir `MyVector` užpildymas `push_back()` metodu su skirtingais `int` elementų kiekiais:
+
+| Elementų skaičius | `std::vector` (ms) | `MyVector` (ms) |
+|-------------------|--------------------|------------------|
+| 10,000            | 0.623              | 0.073            |
+| 100,000           | 5.667              | 0.676            |
+| 1,000,000         | 47.516             | 5.243            |
+| 10,000,000        | 454.014            | 65.103           |
+
+###  Išvados
+
+- `MyVector` yra akivaizdžiai spartesnis nei `std::vector` testavimo sąlygomis.
+- Skirtumas ypač išryškėja su didesniais duomenų kiekiais.
+- `std::vector` naudoja papildomas saugumo ir optimizavimo strategijas (tokias kaip exception safety, iterator compatibility ir pan.), tuo tarpu `MyVector` realizuotas supaprastintu būdu, leidžiančiu pasiekti geresnį našumą.
+
+###  Testavimo metodika
+
+Eksperimentas atliktas naudojant `std::chrono::high_resolution_clock`:
+
+```cpp
+auto start = high_resolution_clock::now();
+for (unsigned int i = 1; i <= N; ++i)
+    v.push_back(i);
+auto end = high_resolution_clock::now();

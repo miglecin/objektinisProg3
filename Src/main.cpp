@@ -1,5 +1,9 @@
 #include <iostream>
-#include "MyVector.h"  // Įtraukiame antraštės failą
+#include <vector>
+#include "sparta.h"
+#include "MyVector.h"  
+
+void matuotiSparta(unsigned int dydis);
 
 int main() {
     MyVector<int> vec;
@@ -25,6 +29,13 @@ int main() {
         std::cout << vec[i] << " ";
     }
     std::cout << std::endl;
+
+
+    std::vector<unsigned int> dydziai = {10000, 100000, 1000000, 10000000};
+
+    for (unsigned int d : dydziai) {
+        matuotiSparta(d);
+    }
 
     return 0;
 }

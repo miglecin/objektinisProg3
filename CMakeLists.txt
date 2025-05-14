@@ -27,6 +27,7 @@ add_library(MyVector
 # Pagrindinis šaltinio failas
 add_executable(VectorApp
     Src/main.cpp
+    Src/sparta.cpp
 )
 
 # Susiejame MyVector biblioteką su pagrindiniu vykdomu failu
