@@ -1,0 +1,49 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {lithuanian}{}\relax 
+\contentsline {chapter}{\numberline {1}Klasės Indeksas}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Klasės}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Failo Indeksas}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Failai}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Klasės Dokumentacija}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}My\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vector$<$ T $>$ Klasė Šablonas}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Tipo Aprašymo Dokumentacija}{6}{subsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.1}const\_reference}{6}{subsubsection.3.1.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.2}reference}{6}{subsubsection.3.1.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.1.3}size\_type}{6}{subsubsection.3.1.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.1.4}value\_type}{6}{subsubsection.3.1.1.4}%
+\contentsline {subsection}{\numberline {3.1.2}Konstruktoriaus ir Destruktoriaus Dokumentacija}{6}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}MyVector()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{6}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}$\sim $MyVector()}{6}{subsubsection.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}MyVector()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{7}{subsubsection.3.1.2.3}%
+\contentsline {subsubsection}{\numberline {3.1.2.4}MyVector()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{7}{subsubsection.3.1.2.4}%
+\contentsline {subsubsection}{\numberline {3.1.2.5}MyVector()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{7}{subsubsection.3.1.2.5}%
+\contentsline {subsection}{\numberline {3.1.3}Metodų Dokumentacija}{7}{subsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}assign()}{7}{subsubsection.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}at()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{7}{subsubsection.3.1.3.2}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}at()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{7}{subsubsection.3.1.3.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.4}back()}{7}{subsubsection.3.1.3.4}%
+\contentsline {subsubsection}{\numberline {3.1.3.5}begin()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{8}{subsubsection.3.1.3.5}%
+\contentsline {subsubsection}{\numberline {3.1.3.6}begin()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{8}{subsubsection.3.1.3.6}%
+\contentsline {subsubsection}{\numberline {3.1.3.7}clear()}{8}{subsubsection.3.1.3.7}%
+\contentsline {subsubsection}{\numberline {3.1.3.8}empty()}{8}{subsubsection.3.1.3.8}%
+\contentsline {subsubsection}{\numberline {3.1.3.9}end()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{8}{subsubsection.3.1.3.9}%
+\contentsline {subsubsection}{\numberline {3.1.3.10}end()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{8}{subsubsection.3.1.3.10}%
+\contentsline {subsubsection}{\numberline {3.1.3.11}erase()}{8}{subsubsection.3.1.3.11}%
+\contentsline {subsubsection}{\numberline {3.1.3.12}front()}{8}{subsubsection.3.1.3.12}%
+\contentsline {subsubsection}{\numberline {3.1.3.13}get\_capacity()}{8}{subsubsection.3.1.3.13}%
+\contentsline {subsubsection}{\numberline {3.1.3.14}get\_size()}{9}{subsubsection.3.1.3.14}%
+\contentsline {subsubsection}{\numberline {3.1.3.15}insert()}{9}{subsubsection.3.1.3.15}%
+\contentsline {subsubsection}{\numberline {3.1.3.16}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{9}{subsubsection.3.1.3.16}%
+\contentsline {subsubsection}{\numberline {3.1.3.17}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{9}{subsubsection.3.1.3.17}%
+\contentsline {subsubsection}{\numberline {3.1.3.18}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{9}{subsubsection.3.1.3.18}%
+\contentsline {subsubsection}{\numberline {3.1.3.19}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{9}{subsubsection.3.1.3.19}%
+\contentsline {subsubsection}{\numberline {3.1.3.20}pop\_back()}{9}{subsubsection.3.1.3.20}%
+\contentsline {subsubsection}{\numberline {3.1.3.21}push\_back()}{9}{subsubsection.3.1.3.21}%
+\contentsline {subsubsection}{\numberline {3.1.3.22}reserve()}{10}{subsubsection.3.1.3.22}%
+\contentsline {subsubsection}{\numberline {3.1.3.23}resize()}{10}{subsubsection.3.1.3.23}%
+\contentsline {subsubsection}{\numberline {3.1.3.24}shrink\_to\_fit()}{10}{subsubsection.3.1.3.24}%
+\contentsline {subsubsection}{\numberline {3.1.3.25}swap()}{10}{subsubsection.3.1.3.25}%
+\contentsline {chapter}{\numberline {4}Failo Dokumentacija}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}My\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vector.h Failo Nuoroda}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}My\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}My\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vector.cpp Failo Nuoroda}{14}{section.4.3}%
