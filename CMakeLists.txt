@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(MyVectorProject)
 
 # Nustatome C++ standartą
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Užkrauname Catch2 biblioteką
@@ -19,19 +19,22 @@ FetchContent_MakeAvailable(Catch2)
 # Nurodome, kur yra antraščių failai
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-# Susiejame MyVector kaip atskirą biblioteką
-add_library(MyVector
-    Src/MyVector.cpp
-)
+# MyVector biblioteka kaip INTERFACE, nes viskas realizuota .h faile
+add_library(MyVector INTERFACE)
+target_include_directories(MyVector INTERFACE ${CMAKE_SOURCE_DIR}/include)
 
 # Pagrindinis šaltinio failas
 add_executable(VectorApp
-    Src/main.cpp
+    Src/v1.2.cpp
     Src/sparta.cpp
     Src/perskirstymai.cpp
+    Src/LaikoMatavimas.cpp
+    Src/testRuleOf5.cpp
+    Src/versijos1Funkc.cpp
+    Src/studentas.cpp
+    Src/strategija3.cpp
 )
 
-# Susiejame MyVector biblioteką su pagrindiniu vykdomu failu
 target_link_libraries(VectorApp PRIVATE MyVector)
 
 # Testų programa
