@@ -2,7 +2,8 @@
 #define VERSIJOSFUNKC_H
 
 #include <iostream>
-#include <vector>
+#include "MyVector.h"
+//#include <vector>
 #include <iomanip>
 #include <string>
 #include <fstream>
@@ -44,42 +45,49 @@ using std::list;
 using std::deque;
 using std::string;
 
-template <typename T=vector<float>>  //jei T nepateikta, bus vector<float
+// Studentas struktūra su `MyVector` konteineriu
+template <typename T = MyVector<float>>  // Jei T nepateikta, bus MyVector<float>
 struct studentas {
-    using nd_type=T;  //konteineris automatiskai priskiriamas is T
+    using nd_type = T;  // Automatiškai priskiriamas konteineris iš T
 
     string Vard;
     string Pav;
-    nd_type nd;  //cia gali buti vector<float>, list<float> arba deque<float>
+    nd_type nd;  // Čia gali būti MyVector, std::vector, list, deque
     int egz;
     double Gal;
 };
 
-
+// **Generuoti Galutinį Balą pagal Vidurkį**
 template <typename Container>
-double generuotiGalvid(Container& nd, int egz) ;
+double generuotiGalvid(Container& nd, int egz);
 
+// **Generuoti Galutinį Balą pagal Mediana**
 template <typename Container>
-double generuotiGalmed(Container nd) ;
+double generuotiGalmed(Container nd);
 
+// Funkcija pasirinktam galutiniam balui
 template <typename Container>
 double pasirinktasGal(Container& nd, int egz, char kaip);
 
+// Atsitiktinių pažymių generavimas
 template <typename Container>
-void randomPaz(Container& nd, int& egz, int kiek_nd) ;
+void randomPaz(Container& nd, int& egz, int kiek_nd);
 
+// Generuoja studentų vardus ir pavardes
 void generuotiVardPav(std::string& vardas, std::string& pavarde);
 
+// SABLONINĖ RŪŠIAVIMO FUNKCIJA
 template <typename Container>
-void rusiuotiStud(Container & grupe, char rusiavimoPas);
+void rusiuotiStud(Container& grupe, char rusiavimoPas);
 
+// Nuskaityti studentų duomenis iš failo
 template <typename Container>
 void nuskaitymasFile(Container& grupe, const string& filename);
 
-void spausdintiRez2( vector<studentas<vector<float>>> grupe, bool iFaila, char pasirinkimas, char rusiavimoPas);
+// Rezultatų spausdinimas
+void spausdintiRez2(MyVector<studentas<MyVector<float>>>& grupe, bool iFaila, char pasirinkimas, char rusiavimoPas);
 
-template<typename Container>
-void spausdintiRez(Container& grupe, bool iFaila, char pasirinkimas, const string& failoPavadinimas);
+//template<typename Container>
+//void spausdintiRez(Container& grupe, bool iFaila, char pasirinkimas, const string& failoPavadinimas);
 
-
-#endif
+#endif  // VERSIJOSFUNKC_H
