@@ -13,7 +13,7 @@
 void vykdytiPrograma(){
     srand(time(0)); //pradinis seed nustatymas
     
-    vector<studentas<vector<float>>> grupe;
+    MyVector<studentas<MyVector<float>>> grupe;
     char pasirinkimas;
     char rusiavimoPas;
     char isvedimoPasirinkimas;
@@ -24,7 +24,7 @@ void vykdytiPrograma(){
     
     do
     {
-        studentas<vector<float>> laik;
+        studentas<MyVector<float>> laik; 
         int kiek_nd;
     
     cout<<"Pasirinkite meniu veiksma: \n";
